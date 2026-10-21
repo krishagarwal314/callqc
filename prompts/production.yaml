@@ -1,0 +1,3 @@
+# The variant currently live. Promoted from v1_baseline after the A/B run in RESULTS.md.
+# CI compares every changed variant against results/baseline.json (written from this variant).
+production: v5_combined

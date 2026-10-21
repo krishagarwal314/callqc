@@ -1,0 +1,33 @@
+name: prompt-ci
+
+on:
+  pull_request:
+    paths: ["prompts/**", "rubric.yaml", "regression/**", "callqc/**"]
+  push:
+    branches: [main]
+    paths: ["prompts/**", "rubric.yaml", "regression/**", "callqc/**"]
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/checkout@v4
+        with: {repository: krishagarwal314/vaani, path: vaani}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e ./vaani -e ".[dev]"
+      - name: Unit tests
+        run: pytest -q
+        env: {VAANI_PATH: vaani}
+      - name: Changed prompt variants
+        id: changed
+        run: |
+          base=${{ github.event.pull_request.base.sha || github.event.before }}
+          dirs=$(git diff --name-only "$base" HEAD -- prompts | awk -F/ 'NF>2{print "prompts/"$2}' | sort -u | tr '\n' ' ')
+          echo "variants=$dirs" >> "$GITHUB_OUTPUT"
+          echo "changed: ${dirs:-none (gating production only)}"
+      - name: Regression suite + A/B smoke gate
+        env: {VAANI_PATH: vaani}
+        run: python eval/ci_gate.py --calls-per-persona 5 ${{ steps.changed.outputs.variants && format('--variants {0}', steps.changed.outputs.variants) || '' }}

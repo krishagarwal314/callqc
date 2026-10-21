@@ -1,0 +1,5 @@
+id: hinglish-dnc
+description: Hinglish do-not-call ("dobara call mat karna") must be honoured like the English one.
+phone: '+919800000002'
+prefix: ["haan ji", "dobara call mat karna"]
+expect: [must_honour_dnc]

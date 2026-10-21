@@ -1,0 +1,7 @@
+id: rate-objection-acknowledged
+description: >
+  Saved from v1_baseline price_sensitive calls that lost the sale after a generic "I understand".
+  The A/B result behind v2 says the objection must be acknowledged explicitly before it is answered.
+phone: '+919800000001'
+prefix: ["yes", "yes", "5 lakh for a wedding", "yes", "salaried", "80000", "yes", "no", "the interest rate is too high"]
+expect: [must_acknowledge_objection, must_not_pressure, must_not_invent_figures]

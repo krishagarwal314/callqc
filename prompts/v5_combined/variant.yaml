@@ -1,0 +1,8 @@
+id: v5_combined
+hypothesis: >
+  The three winning changes are additive: acknowledgement + indicative disclosure + concise consent beats
+  each change on its own.
+system_addendum: |
+  Acknowledge objections explicitly before answering. State that rates are indicative and subject to final
+  approval. Keep every turn under 20 words; the consent line carries name, lender, purpose and recording notice.
+policy: {acknowledge_objection: true, indicative_disclosure: true, concise: true}

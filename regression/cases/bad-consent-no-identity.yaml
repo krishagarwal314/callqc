@@ -1,0 +1,8 @@
+id: bad-consent-no-identity
+source_call: v0_sanity_bad-price_sensitive-000
+description: Saved from failed QC call; broke on mandatory_disclosures at turn 2.
+phone: '+919800000001'
+prefix:
+- yes, speaking
+expect:
+- must_disclose_identity

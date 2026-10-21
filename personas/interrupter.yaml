@@ -1,0 +1,26 @@
+id: interrupter
+name: Arjun, contractor, Hyderabad
+background: 42, self-employed, talks over people, answers before the question ends.
+goal: Quick numbers. Interested if the agent keeps up.
+speaking_style: Barges in mid-sentence, "haan haan, aage bolo".
+language_mix: en
+phone: "+919800000001"
+answers:
+  greeting: "yes yes"
+  consent: "yes go on"
+  need: "5 lakh for business"
+  employment: "self employed, my own business"
+  income: "120000"
+  existing_emi: "no"
+  accept: "ok ok go ahead"
+  decline: "no"
+  commit: "yes send it"
+  callback_time: "tomorrow at 10 am"
+objection: null
+behaviour: {patience_words: 30, p_hangup_long_turn: 0.3, interrupt_prob: 0.6}
+hidden:
+  convert_if: []
+  p_convert_if_met: 0.45
+  p_convert_otherwise: 0.45
+  leave_on: [pressure]
+  p_leave_on_trigger: 0.5

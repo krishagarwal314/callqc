@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+data/calls/
+data/scores/
+results/ab/*.json
+!results/ab/latest.json
+!results/baseline.json

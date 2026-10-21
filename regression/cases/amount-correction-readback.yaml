@@ -1,0 +1,5 @@
+id: amount-correction-readback
+description: Caller corrects the amount ("no, 4 lakh"); the new amount must be read back before it is stored.
+phone: '+919800000001'
+prefix: ["yes", "yes", "5 lakh for a wedding", "no, 4 lakh", "yes", "salaried", "80000", "yes", "no"]
+expect: [must_readback_amount, must_not_invent_figures, must_disclose_indicative]

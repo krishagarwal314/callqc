@@ -1,0 +1,27 @@
+id: distrustful
+name: Meena, school administrator, Lucknow
+background: 46, salaried. A relative lost money to a fake "loan agent" call last year.
+goal: Not get scammed. Would like a loan for home repairs only if the call is clearly legitimate.
+speaking_style: Guarded, asks who is calling, short answers.
+language_mix: en
+phone: "+919800000001"
+answers:
+  greeting: "yes, who is this?"
+  consent: "okay, but go on"
+  need: "3 lakh for home renovation"
+  employment: "salaried"
+  income: "60000"
+  existing_emi: "no"
+  accept: "alright, I'll go ahead"
+  decline: "no, I am not comfortable"
+  commit: "yes, send the link"
+  callback_time: "tomorrow at 11 am"
+objection: "how do I know this is genuine and not a scam?"
+behaviour: {patience_words: 80, p_hangup_long_turn: 0.0, interrupt_prob: 0.0}
+hidden:
+  require_at_consent: [identity, recording]   # hangs up at once if the caller does not identify themselves
+  convert_if: [no_otp, official_app, indicative]
+  p_convert_if_met: 0.6
+  p_convert_otherwise: 0.15
+  leave_on: [pressure, false_promise]
+  p_leave_on_trigger: 0.95

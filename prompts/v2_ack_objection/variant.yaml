@@ -1,0 +1,8 @@
+id: v2_ack_objection
+hypothesis: >
+  Explicitly acknowledging the objection ("that's a completely fair concern") before countering raises
+  conversion for the price-sensitive and Hinglish personas, whose hidden condition requires feeling heard.
+system_addendum: |
+  When the caller raises an objection, first acknowledge it explicitly in one short sentence
+  ("That's a completely fair concern"), then answer that specific concern with facts from the call state.
+policy: {acknowledge_objection: true}

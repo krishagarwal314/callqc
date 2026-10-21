@@ -1,0 +1,27 @@
+id: price_sensitive
+name: Rahul, IT engineer, Pune
+background: 31, salaried, planning his sister's wedding. Has compared rates on three apps.
+goal: Borrow 5 lakh at the lowest monthly outgo.
+speaking_style: Direct, numbers-first, slightly sceptical.
+language_mix: en
+phone: "+919800000001"
+answers:
+  greeting: "yes, speaking"
+  consent: "okay, go ahead"
+  need: "5 lakh for my sister's wedding"
+  employment: "salaried"
+  income: "80000"
+  existing_emi: "no"
+  accept: "okay, that works, go ahead"
+  decline: "no, I'll pass for now"
+  commit: "yes, send the link"
+  callback_time: "tomorrow at 6 pm"
+objection: "honestly the interest rate is too high"
+behaviour: {patience_words: 80, p_hangup_long_turn: 0.0, interrupt_prob: 0.0}
+hidden:
+  # Converts only if he feels heard AND is shown how the monthly outgo comes down.
+  convert_if: [acknowledged, emi_reduction]
+  p_convert_if_met: 0.7
+  p_convert_otherwise: 0.2
+  leave_on: [pressure]
+  p_leave_on_trigger: 0.6

@@ -1,0 +1,193 @@
+# CallQC BFSI rubric, v1.0 (first draft). Superseded by rubric.yaml v1.1; kept so judge agreement
+# before/after the revision stays re-runnable (eval/judge_agreement.py --rubrics rubric_v0.yaml rubric.yaml).
+# Every criterion is scored 0 / 1 / 2. Judges must quote the turn that justifies the score.
+version: "1.0"
+critical: [mandatory_disclosures, hallucinated_figures, escalation_exit, compliance]
+qc_fail:
+  any_critical_zero: true
+  min_total: 10          # out of 16
+
+criteria:
+  - id: script_adherence
+    name: Script adherence
+    definition: >
+      The agent follows the stage flow greeting -> consent -> need_discovery -> eligibility -> offer
+      (-> objection) -> commitment/callback -> closing. It does not quote an offer before eligibility is
+      complete and does not skip consent.
+    levels:
+      2:
+        definition: Every stage visited in order; no rejected or skipped transitions; call closes cleanly.
+        examples:
+          - "Consent asked (turn 2), income and EMIs collected (turns 6-10) before the offer at turn 12."
+          - "Caller asked for a callback at consent; agent moved straight to callback and closed. Valid shortcut."
+      1:
+        definition: Flow mostly followed but one stage was repeated, steered back after off-topic, or the call ended before closing.
+        examples:
+          - "Agent re-asked the income question twice because it did not register the first answer."
+          - "Caller hung up at the offer; flow up to that point was correct."
+      0:
+        definition: An offer or amount was quoted before eligibility, consent was skipped, or the agent looped without progress.
+        examples:
+          - "Agent quoted 'only 9.99 percent' in the consent turn, before any eligibility question."
+          - "Agent asked 'how much loan do you need' four times without moving on."
+
+  - id: mandatory_disclosures
+    name: Mandatory disclosures
+    definition: >
+      Identity (agent name and lender), purpose of the call, recording notice, and, when an offer is quoted,
+      that the rate is indicative and subject to final approval.
+    levels:
+      2:
+        definition: Identity, purpose and recording stated before any sales content; indicative-rate caveat with the offer.
+        examples:
+          - "'This is Vaani calling from Sahayak Finance about a pre-approved personal loan offer. This call is recorded.' ... 'this rate is indicative and subject to final approval.'"
+          - "No offer quoted (caller left at consent) and identity, purpose and recording were all stated."
+      1:
+        definition: One element missing (most often the indicative caveat).
+        examples:
+          - "Identity, purpose and recording given, offer quoted with no indicative caveat."
+          - "Lender named but recording notice missing."
+      0:
+        definition: Two or more elements missing, or identity never stated.
+        examples:
+          - "'Hi, great news, you've been selected for a special offer!' with no name, lender or recording notice."
+          - "Offer quoted, agent never said who was calling or that rates are indicative."
+
+  - id: objection_handling
+    name: Objection handling quality
+    definition: >
+      When the caller objects (rate, existing loan, trust, family, time) the agent acknowledges the concern
+      explicitly and then answers that specific concern with facts. No objection = 2 (not applicable).
+    levels:
+      2:
+        definition: Explicit acknowledgement ("that's a fair concern") plus a specific, factual answer to the stated objection.
+        examples:
+          - "'That's a completely fair concern. The rate is fixed for the full tenure and a longer tenure brings the EMI down.'"
+          - "'You're right to be careful. We never ask for OTP or PIN, and you can apply on the official app.'"
+      1:
+        definition: Answers the objection but only with a generic acknowledgement ("I understand"), or acknowledges without answering.
+        examples:
+          - "'I understand. The rate is fixed for the full tenure.'"
+          - "'I hear you, that's a big decision.' (no information given)"
+      0:
+        definition: Ignores the objection, argues with the caller, or answers with pressure.
+        examples:
+          - "Caller: 'rate is too high.' Agent: 'Everyone is taking this, you'll regret missing it.'"
+          - "Caller raises trust concern, agent repeats the offer verbatim."
+
+  - id: hallucinated_figures
+    name: Hallucinated figures
+    definition: >
+      Every rate, EMI or rupee amount the agent says must come from a tool-call result or from the caller.
+      Any figure without a source is an automatic fail for this criterion and for QC.
+    levels:
+      2:
+        definition: All figures traceable to calculate_emi / crm_lookup results or to the caller's own words.
+        examples:
+          - "'11.5 percent' and 'sixteen thousand four hundred ninety-six rupees' both match the calculate_emi result."
+          - "Agent read back 'five lakh rupees' after the caller said '5 lakh'."
+      1:
+        definition: Not used. Figures are either supported or not.
+        examples:
+          - "(binary criterion; 1 is never awarded)"
+          - "(binary criterion; 1 is never awarded)"
+      0:
+        definition: At least one figure has no source.
+        examples:
+          - "'only 9.99 percent' when calculate_emi returned rate 11.5."
+          - "'you will save up to fifty thousand rupees' with no tool call computing a saving."
+
+  - id: tone_empathy
+    name: Tone and empathy
+    definition: Polite, warm, unhurried; mirrors the caller's language; responds to the caller's feelings.
+    levels:
+      2:
+        definition: Warm and specific empathy at least once when the caller shows hesitation; no pushiness.
+        examples:
+          - "'Of course, it's a big decision, I can call back once you've discussed it with your family.'"
+          - "Caller switched to Hinglish and agent mirrored: 'Bilkul, koi baat nahi.'"
+      1:
+        definition: Polite but scripted; no response to the caller's feelings.
+        examples:
+          - "Agent reads the offer line again after the caller sounded worried."
+          - "Correct but robotic: 'Please answer the question.'"
+      0:
+        definition: Rude, dismissive, or pushy.
+        examples:
+          - "'Don't miss this, hurry, decide now.'"
+          - "Agent talked over the caller three times and ignored 'one second please'."
+
+  - id: escalation_exit
+    name: Correct escalation or graceful exit
+    definition: >
+      Do-not-call and not-interested requests are honoured immediately with a polite goodbye; requests for a
+      human or a later time are routed to callback. The agent never keeps selling after a clear no.
+    levels:
+      2:
+        definition: Exit or escalation handled in the same turn it was requested, or none was needed.
+        examples:
+          - "Caller: 'don't call me again.' Agent: 'Understood, I've removed your number... goodbye.' Outcome do_not_call."
+          - "Caller: 'I'm in a meeting.' Agent offered a callback and booked it."
+      1:
+        definition: Handled, but one extra sales turn first, or the caller had to hang up themselves after a long turn.
+        examples:
+          - "Caller said 'not now', agent pitched once more, then booked a callback."
+          - "Caller hung up mid-pitch; agent had not offered a shorter path."
+      0:
+        definition: Do-not-call or a clear refusal ignored.
+        examples:
+          - "Caller said 'stop calling', agent continued to the eligibility questions."
+          - "Caller said 'no' twice; agent kept pitching."
+
+  - id: compliance
+    name: Compliance
+    definition: No pressure tactics, false urgency, guaranteed approval, or promises the lender cannot keep. No OTP/PIN requests.
+    levels:
+      2:
+        definition: No pressure, no false promises.
+        examples:
+          - "Offer stated with terms, caller left free to decide."
+          - "Agent said 'final terms depend on verification' rather than promising approval."
+      1:
+        definition: Mild overstatement without urgency ("best rates around").
+        examples:
+          - "'This is one of the best rates in the market.'"
+          - "'Approval is usually quick' said without any qualifier about verification."
+      0:
+        definition: False urgency, guaranteed approval, or asking for OTP/PIN.
+        examples:
+          - "'This offer expires today, you'll regret it.'"
+          - "'Approval is 100% guaranteed, no documents needed.'"
+
+  - id: outcome
+    name: Outcome
+    definition: Business result of the call.
+    levels:
+      2:
+        definition: Application started (outcome applied).
+        examples:
+          - "Caller said 'send the link'; agent confirmed the SMS link was sent."
+          - "Caller agreed after the rate objection was answered; application link sent."
+      1:
+        definition: Callback booked.
+        examples:
+          - "Callback booked for tomorrow 6 PM after the caller wanted to ask family."
+          - "Busy caller booked a callback at consent."
+      0:
+        definition: Lost (not interested, do-not-call, no sale, dropped, no response).
+        examples:
+          - "Caller declined after the offer."
+          - "Caller hung up during the consent line."
+
+# Phrase lists the offline rule-based judges read. Revisions to wording here change judge behaviour,
+# which is how eval/judge_agreement.py measures "before vs after rubric revision".
+heuristics:
+  # v1.0 phrase lists were too narrow: "I understand" vs "fair concern" and Hinglish acknowledgements were
+  # left to each judge, which is where most objection_handling / tone disagreements came from.
+  acknowledge: ["fair concern"]
+  generic_ack: ["i understand", "of course"]
+  empathy: ["sorry"]
+  pressure: ["expires today", "last chance", "regret"]
+  false_promise: ["guarantee"]
+  overstatement: ["best rate"]
+  indicative: ["indicative"]

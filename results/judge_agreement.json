@@ -1,0 +1,353 @@
+{
+ "n_human_labelled": 0,
+ "results": [
+  {
+   "rubric": "rubric_v0.yaml",
+   "mode": "inter_judge",
+   "n_calls": 240,
+   "judges": {
+    "rule-strict": {
+     "overall": {
+      "n": 1920,
+      "pct": 99.3,
+      "kappa": 0.988
+     },
+     "per_criterion": {
+      "script_adherence": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "mandatory_disclosures": {
+       "n": 240,
+       "pct": 98.3,
+       "kappa": 0.974
+      },
+      "objection_handling": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "hallucinated_figures": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "tone_empathy": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "escalation_exit": {
+       "n": 240,
+       "pct": 96.2,
+       "kappa": 0.855
+      },
+      "compliance": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "outcome": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      }
+     }
+    },
+    "rule-lenient": {
+     "overall": {
+      "n": 1920,
+      "pct": 83.2,
+      "kappa": 0.666
+     },
+     "per_criterion": {
+      "script_adherence": {
+       "n": 240,
+       "pct": 82.9,
+       "kappa": 0.0
+      },
+      "mandatory_disclosures": {
+       "n": 240,
+       "pct": 98.3,
+       "kappa": 0.974
+      },
+      "objection_handling": {
+       "n": 240,
+       "pct": 72.9,
+       "kappa": 0.502
+      },
+      "hallucinated_figures": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "tone_empathy": {
+       "n": 240,
+       "pct": 28.7,
+       "kappa": 0.151
+      },
+      "escalation_exit": {
+       "n": 240,
+       "pct": 82.9,
+       "kappa": 0.0
+      },
+      "compliance": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "outcome": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      }
+     }
+    },
+    "rule-literal": {
+     "overall": {
+      "n": 1920,
+      "pct": 99.3,
+      "kappa": 0.988
+     },
+     "per_criterion": {
+      "script_adherence": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "mandatory_disclosures": {
+       "n": 240,
+       "pct": 98.3,
+       "kappa": 0.974
+      },
+      "objection_handling": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "hallucinated_figures": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "tone_empathy": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "escalation_exit": {
+       "n": 240,
+       "pct": 96.2,
+       "kappa": 0.855
+      },
+      "compliance": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "outcome": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      }
+     }
+    }
+   },
+   "confusion_matrix": {
+    "judge": "rule-literal",
+    "matrix": [
+     [
+      287,
+      0,
+      0
+     ],
+     [
+      4,
+      476,
+      0
+     ],
+     [
+      0,
+      9,
+      1144
+     ]
+    ]
+   }
+  },
+  {
+   "rubric": "rubric.yaml",
+   "mode": "inter_judge",
+   "n_calls": 240,
+   "judges": {
+    "rule-strict": {
+     "overall": {
+      "n": 1920,
+      "pct": 99.3,
+      "kappa": 0.987
+     },
+     "per_criterion": {
+      "script_adherence": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "mandatory_disclosures": {
+       "n": 240,
+       "pct": 98.3,
+       "kappa": 0.974
+      },
+      "objection_handling": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "hallucinated_figures": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "tone_empathy": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "escalation_exit": {
+       "n": 240,
+       "pct": 96.2,
+       "kappa": 0.855
+      },
+      "compliance": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "outcome": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      }
+     }
+    },
+    "rule-lenient": {
+     "overall": {
+      "n": 1920,
+      "pct": 84.3,
+      "kappa": 0.667
+     },
+     "per_criterion": {
+      "script_adherence": {
+       "n": 240,
+       "pct": 82.9,
+       "kappa": 0.0
+      },
+      "mandatory_disclosures": {
+       "n": 240,
+       "pct": 98.3,
+       "kappa": 0.974
+      },
+      "objection_handling": {
+       "n": 240,
+       "pct": 60.4,
+       "kappa": 0.228
+      },
+      "hallucinated_figures": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "tone_empathy": {
+       "n": 240,
+       "pct": 49.6,
+       "kappa": 0.231
+      },
+      "escalation_exit": {
+       "n": 240,
+       "pct": 82.9,
+       "kappa": 0.0
+      },
+      "compliance": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "outcome": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      }
+     }
+    },
+    "rule-literal": {
+     "overall": {
+      "n": 1920,
+      "pct": 99.3,
+      "kappa": 0.987
+     },
+     "per_criterion": {
+      "script_adherence": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "mandatory_disclosures": {
+       "n": 240,
+       "pct": 98.3,
+       "kappa": 0.974
+      },
+      "objection_handling": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "hallucinated_figures": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "tone_empathy": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "escalation_exit": {
+       "n": 240,
+       "pct": 96.2,
+       "kappa": 0.855
+      },
+      "compliance": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      },
+      "outcome": {
+       "n": 240,
+       "pct": 100.0,
+       "kappa": 1.0
+      }
+     }
+    }
+   },
+   "confusion_matrix": {
+    "judge": "rule-literal",
+    "matrix": [
+     [
+      287,
+      0,
+      0
+     ],
+     [
+      4,
+      416,
+      0
+     ],
+     [
+      0,
+      9,
+      1204
+     ]
+    ]
+   }
+  }
+ ]
+}

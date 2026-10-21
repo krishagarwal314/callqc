@@ -1,0 +1,27 @@
+id: polite_uninterested
+name: Lakshmi, retired teacher, Chennai
+background: 63, pension income, no need for a loan, too polite to cut the call short.
+goal: End the call politely without buying.
+speaking_style: Warm, says "that's nice" and "thank you", never commits.
+language_mix: en
+phone: "+919800000001"
+answers:
+  greeting: "yes, speaking"
+  consent: "yes, okay"
+  need: "maybe 1 lakh, for travel"
+  employment: "salaried"
+  income: "40000"
+  existing_emi: "no"
+  accept: "okay, go ahead"
+  decline: "no, I'm not interested, thank you"
+  commit: "yes"
+  callback_time: "tomorrow at 4 pm"
+objection: "hmm, no, I don't think so"
+behaviour: {patience_words: 80, p_hangup_long_turn: 0.0, interrupt_prob: 0.0}
+hidden:
+  # Politeness is not intent: converts rarely whatever the agent says.
+  convert_if: [never]
+  p_convert_if_met: 0.0
+  p_convert_otherwise: 0.05
+  leave_on: [pressure]
+  p_leave_on_trigger: 0.9

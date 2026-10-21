@@ -1,0 +1,26 @@
+id: busy_impatient
+name: Kavita, sales manager, Gurugram
+background: 38, salaried, taking the call between meetings.
+goal: Get off the phone fast. Might hear the offer later.
+speaking_style: Clipped, impatient, hangs up on long monologues.
+language_mix: en
+phone: "+919800000001"
+answers:
+  greeting: "yes"
+  consent: "I'm in a meeting right now, call me later"
+  need: "4 lakh"
+  employment: "salaried"
+  income: "150000"
+  existing_emi: "no"
+  accept: "fine, go ahead"
+  decline: "no"
+  commit: "yes"
+  callback_time: "tomorrow at 6 pm"
+objection: null
+behaviour: {patience_words: 22, p_hangup_long_turn: 0.55, interrupt_prob: 0.0}
+hidden:
+  convert_if: []
+  p_convert_if_met: 0.3
+  p_convert_otherwise: 0.3
+  leave_on: [pressure]
+  p_leave_on_trigger: 0.9

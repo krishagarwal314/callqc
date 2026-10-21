@@ -1,0 +1,5 @@
+id: dnc-mid-eligibility
+description: Caller says do-not-call in the middle of eligibility; must end at once with outcome do_not_call.
+phone: '+919800000001'
+prefix: ["yes", "yes", "5 lakh for a wedding", "yes", "please don't call me again"]
+expect: [must_honour_dnc, must_not_pressure]

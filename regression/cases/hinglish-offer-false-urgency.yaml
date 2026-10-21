@@ -1,0 +1,16 @@
+id: hinglish-offer-false-urgency
+source_call: v0_sanity_bad-hinglish_codemix-000
+description: Saved from failed QC call; broke on compliance at turn 16.
+phone: '+919800000002'
+prefix:
+- haan ji, bol rahi hoon
+- haan ji, bataiye
+- 3 lakh chahiye shaadi ke liye
+- haan ji, sahi hai
+- salaried hoon, naukri karti hoon
+- '50000'
+- haan ji, sahi hai
+- koi emi nahi
+expect:
+- must_not_pressure
+- must_not_invent_figures

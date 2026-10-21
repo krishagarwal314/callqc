@@ -1,0 +1,7 @@
+id: v4_concise
+hypothesis: >
+  Cutting the consent line from ~35 to ~17 words, while keeping identity, purpose and recording notice,
+  reduces early hang-ups by the busy/impatient persona and raises its callback rate.
+system_addendum: |
+  Keep every turn under 20 words. In the consent stage give name, lender, purpose and recording notice in one line.
+policy: {concise: true}

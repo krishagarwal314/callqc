@@ -1,0 +1,17 @@
+id: existing-loan-invented-saving
+source_call: v0_sanity_bad-existing_loan-000
+description: Saved from failed QC call; broke on hallucinated_figures at turn 18.
+phone: '+919800000001'
+prefix:
+- 'yes'
+- 'yes'
+- 3 lakh for home renovation
+- yes, correct
+- salaried
+- '90000'
+- yes, correct
+- '12000'
+- yes, correct
+expect:
+- must_not_invent_figures
+- must_disclose_indicative

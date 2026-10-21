@@ -1,0 +1,26 @@
+id: confused_terms
+name: Ramesh, shop assistant, Indore
+background: 27, salaried, first loan. Unsure what EMI, tenure and floating rate mean.
+goal: Understand exactly what he will pay before saying yes.
+speaking_style: Hesitant, asks clarifying questions, apologises for not understanding.
+language_mix: en
+phone: "+919800000001"
+answers:
+  greeting: "yes"
+  consent: "yes okay"
+  need: "2 lakh for medical treatment"
+  employment: "salaried"
+  income: "35000"
+  existing_emi: "no"
+  accept: "okay, I understand now, go ahead"
+  decline: "no, I will think about it"
+  commit: "yes"
+  callback_time: "tomorrow at 7 pm"
+objection: "sorry, I don't understand, is the rate fixed or will it go up?"
+behaviour: {patience_words: 70, p_hangup_long_turn: 0.0, interrupt_prob: 0.0}
+hidden:
+  convert_if: [fixed_rate, indicative]
+  p_convert_if_met: 0.6
+  p_convert_otherwise: 0.3
+  leave_on: [pressure]
+  p_leave_on_trigger: 0.5

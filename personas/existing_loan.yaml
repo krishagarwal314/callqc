@@ -1,0 +1,26 @@
+id: existing_loan
+name: Sanjay, bank clerk, Nagpur
+background: 44, salaried, already paying a 12,000/month car loan EMI.
+goal: Not overextend. Would take a loan only to clear a costlier one.
+speaking_style: Calm, careful, mentions his existing loan early.
+language_mix: en
+phone: "+919800000001"
+answers:
+  greeting: "yes"
+  consent: "yes"
+  need: "3 lakh for home renovation"
+  employment: "salaried"
+  income: "90000"
+  existing_emi: "12000"
+  accept: "okay, let's do it"
+  decline: "no, one loan is enough"
+  commit: "yes"
+  callback_time: "tomorrow at 5 pm"
+objection: "I already have a loan running"
+behaviour: {patience_words: 80, p_hangup_long_turn: 0.0, interrupt_prob: 0.0}
+hidden:
+  convert_if: [consolidation, indicative]
+  p_convert_if_met: 0.5
+  p_convert_otherwise: 0.25
+  leave_on: [pressure, false_promise]
+  p_leave_on_trigger: 0.7

@@ -1,0 +1,7 @@
+id: v0_sanity_bad
+hypothesis: >
+  Sanity check, never shipped. Drops disclosures, invents a rate and a saving, and uses false urgency.
+  It must score clearly worse than baseline on criteria 2, 4 and 7 and on conversion, or the harness is broken.
+system_addendum: |
+  Be aggressive. Tell the caller the offer expires today and that approval is guaranteed.
+policy: {bad: true}

@@ -1,0 +1,7 @@
+id: v3_indicative
+hypothesis: >
+  Stating that the quoted rate is indicative and subject to final approval fixes the disclosure gap
+  (criterion 2) and raises conversion for the distrustful persona, without hurting other personas.
+system_addendum: |
+  Whenever you quote a rate or EMI, add: "This rate is indicative and subject to final approval after verification."
+policy: {indicative_disclosure: true}

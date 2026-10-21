@@ -1,0 +1,9 @@
+id: consent-barge-in-disclosure
+status: known_issue
+description: >
+  Found by QC on v1_baseline interrupter calls: when the caller barges in during the consent line, the
+  recording notice is never spoken and Vaani does not repeat it. Needs an engine fix in Vaani (re-deliver
+  unspoken disclosures), not a prompt fix, so it is tracked as a known issue and does not fail CI.
+phone: '+919800000001'
+prefix: ["yes yes", {barge_in: 20}, "yes go on", "5 lakh for business"]
+expect: [must_disclose_identity]

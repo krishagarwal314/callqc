@@ -1,0 +1,17 @@
+[project]
+name = "callqc"
+version = "1.0.0"
+description = "Call quality scoring and prompt A/B testing for voice AI sales agents in Indian BFSI"
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6", "numpy>=1.26", "scipy>=1.11", "scikit-learn>=1.4", "pydantic>=2.6"]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.70"]
+ui = ["streamlit>=1.35", "pandas>=2.0"]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["callqc*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

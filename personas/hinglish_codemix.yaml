@@ -1,0 +1,26 @@
+id: hinglish_codemix
+name: Priya, nurse, Jaipur
+background: 29, salaried, speaks Hinglish, switches language mid-sentence.
+goal: Loan for her wedding, worried about byaaj (interest).
+speaking_style: Friendly, code-mixed Hinglish, says "haan ji", "theek hai".
+language_mix: hinglish
+phone: "+919800000002"
+answers:
+  greeting: "haan ji, bol rahi hoon"
+  consent: "haan ji, bataiye"
+  need: "3 lakh chahiye shaadi ke liye"
+  employment: "salaried hoon, naukri karti hoon"
+  income: "50000"
+  existing_emi: "koi emi nahi"
+  accept: "theek hai, aage badhiye"
+  decline: "nahi, rehne dijiye"
+  commit: "haan ji, link bhej dijiye"
+  callback_time: "kal shaam 6 baje"
+objection: "byaaj bahut zyada hai yaar"
+behaviour: {patience_words: 80, p_hangup_long_turn: 0.0, interrupt_prob: 0.0}
+hidden:
+  convert_if: [acknowledged, emi_reduction]
+  p_convert_if_met: 0.65
+  p_convert_otherwise: 0.2
+  leave_on: [pressure]
+  p_leave_on_trigger: 0.6
